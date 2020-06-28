@@ -1,0 +1,297 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/releen/vendir-fixtures/git/refs/heads/master
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 4.18.0
+      Accept:
+      - application/vnd.github.v3+json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 28 Jun 2020 22:46:35 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Accept-Encoding, Accept, X-Requested-With, Accept-Encoding
+      Etag:
+      - W/"bf7f4857a7a0a32d03c11f6decc9c309"
+      Last-Modified:
+      - Sun, 28 Jun 2020 22:33:18 GMT
+      X-Poll-Interval:
+      - '300'
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '44'
+      X-Ratelimit-Reset:
+      - '1593385866'
+      Accept-Ranges:
+      - bytes
+      Content-Length:
+      - '225'
+      X-Github-Request-Id:
+      - EA37:6844:7E1971:920C02:5EF91DCB
+    body:
+      encoding: ASCII-8BIT
+      string: '{"ref":"refs/heads/master","node_id":"MDM6UmVmMjc1Njc4NjI2OnJlZnMvaGVhZHMvbWFzdGVy","url":"https://api.github.com/repos/releen/vendir-fixtures/git/refs/heads/master","object":{"sha":"2cf9866fcc6152579949dda7204d3930eadc2c1d","type":"commit","url":"https://api.github.com/repos/releen/vendir-fixtures/git/commits/2cf9866fcc6152579949dda7204d3930eadc2c1d"}}'
+    http_version: 
+  recorded_at: Sun, 28 Jun 2020 22:46:35 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/releen/vendir-fixtures/contents/?ref=2cf9866fcc6152579949dda7204d3930eadc2c1d
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 4.18.0
+      Accept:
+      - application/vnd.github.v3+json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 28 Jun 2020 22:46:35 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Accept-Encoding, Accept, X-Requested-With, Accept-Encoding
+      Etag:
+      - W/"22bbd32a2ba5b5e9befdb58493403c6e5dcccd9c"
+      Last-Modified:
+      - Sun, 28 Jun 2020 22:33:18 GMT
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '43'
+      X-Ratelimit-Reset:
+      - '1593385865'
+      Accept-Ranges:
+      - bytes
+      Content-Length:
+      - '470'
+      X-Github-Request-Id:
+      - EA38:460E:DEF726:105FC01:5EF91DCB
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"name":"README.md","path":"README.md","sha":"6e6033c5b59149ed39fb988acd37c01cf2ebe654","size":40,"url":"https://api.github.com/repos/releen/vendir-fixtures/contents/README.md?ref=2cf9866fcc6152579949dda7204d3930eadc2c1d","html_url":"https://github.com/releen/vendir-fixtures/blob/2cf9866fcc6152579949dda7204d3930eadc2c1d/README.md","git_url":"https://api.github.com/repos/releen/vendir-fixtures/git/blobs/6e6033c5b59149ed39fb988acd37c01cf2ebe654","download_url":"https://raw.githubusercontent.com/releen/vendir-fixtures/2cf9866fcc6152579949dda7204d3930eadc2c1d/README.md","type":"file","_links":{"self":"https://api.github.com/repos/releen/vendir-fixtures/contents/README.md?ref=2cf9866fcc6152579949dda7204d3930eadc2c1d","git":"https://api.github.com/repos/releen/vendir-fixtures/git/blobs/6e6033c5b59149ed39fb988acd37c01cf2ebe654","html":"https://github.com/releen/vendir-fixtures/blob/2cf9866fcc6152579949dda7204d3930eadc2c1d/README.md"}},{"name":"vendir.lock.yml","path":"vendir.lock.yml","sha":"b668ab0ef89bf7fffc0b4a5c9bd93eb2779ee1d2","size":1794,"url":"https://api.github.com/repos/releen/vendir-fixtures/contents/vendir.lock.yml?ref=2cf9866fcc6152579949dda7204d3930eadc2c1d","html_url":"https://github.com/releen/vendir-fixtures/blob/2cf9866fcc6152579949dda7204d3930eadc2c1d/vendir.lock.yml","git_url":"https://api.github.com/repos/releen/vendir-fixtures/git/blobs/b668ab0ef89bf7fffc0b4a5c9bd93eb2779ee1d2","download_url":"https://raw.githubusercontent.com/releen/vendir-fixtures/2cf9866fcc6152579949dda7204d3930eadc2c1d/vendir.lock.yml","type":"file","_links":{"self":"https://api.github.com/repos/releen/vendir-fixtures/contents/vendir.lock.yml?ref=2cf9866fcc6152579949dda7204d3930eadc2c1d","git":"https://api.github.com/repos/releen/vendir-fixtures/git/blobs/b668ab0ef89bf7fffc0b4a5c9bd93eb2779ee1d2","html":"https://github.com/releen/vendir-fixtures/blob/2cf9866fcc6152579949dda7204d3930eadc2c1d/vendir.lock.yml"}},{"name":"vendir.yml","path":"vendir.yml","sha":"aaea33d054d080d6f9d4be8b2e4dfe8b75f91e9f","size":2953,"url":"https://api.github.com/repos/releen/vendir-fixtures/contents/vendir.yml?ref=2cf9866fcc6152579949dda7204d3930eadc2c1d","html_url":"https://github.com/releen/vendir-fixtures/blob/2cf9866fcc6152579949dda7204d3930eadc2c1d/vendir.yml","git_url":"https://api.github.com/repos/releen/vendir-fixtures/git/blobs/aaea33d054d080d6f9d4be8b2e4dfe8b75f91e9f","download_url":"https://raw.githubusercontent.com/releen/vendir-fixtures/2cf9866fcc6152579949dda7204d3930eadc2c1d/vendir.yml","type":"file","_links":{"self":"https://api.github.com/repos/releen/vendir-fixtures/contents/vendir.yml?ref=2cf9866fcc6152579949dda7204d3930eadc2c1d","git":"https://api.github.com/repos/releen/vendir-fixtures/git/blobs/aaea33d054d080d6f9d4be8b2e4dfe8b75f91e9f","html":"https://github.com/releen/vendir-fixtures/blob/2cf9866fcc6152579949dda7204d3930eadc2c1d/vendir.yml"}}]'
+    http_version: 
+  recorded_at: Sun, 28 Jun 2020 22:46:36 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/releen/vendir-fixtures/contents/vendir.yml?ref=2cf9866fcc6152579949dda7204d3930eadc2c1d
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 4.18.0
+      Accept:
+      - application/vnd.github.v3+json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 28 Jun 2020 22:46:36 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Accept-Encoding, Accept, X-Requested-With, Accept-Encoding
+      Etag:
+      - W/"aaea33d054d080d6f9d4be8b2e4dfe8b75f91e9f"
+      Last-Modified:
+      - Sun, 28 Jun 2020 22:32:51 GMT
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '42'
+      X-Ratelimit-Reset:
+      - '1593385865'
+      Accept-Ranges:
+      - bytes
+      Content-Length:
+      - '2308'
+      X-Github-Request-Id:
+      - EA3A:08C2:4EE1F9:5DB08D:5EF91DCC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"vendir.yml","path":"vendir.yml","sha":"aaea33d054d080d6f9d4be8b2e4dfe8b75f91e9f","size":2953,"url":"https://api.github.com/repos/releen/vendir-fixtures/contents/vendir.yml?ref=2cf9866fcc6152579949dda7204d3930eadc2c1d","html_url":"https://github.com/releen/vendir-fixtures/blob/2cf9866fcc6152579949dda7204d3930eadc2c1d/vendir.yml","git_url":"https://api.github.com/repos/releen/vendir-fixtures/git/blobs/aaea33d054d080d6f9d4be8b2e4dfe8b75f91e9f","download_url":"https://raw.githubusercontent.com/releen/vendir-fixtures/2cf9866fcc6152579949dda7204d3930eadc2c1d/vendir.yml","type":"file","content":"LS0tCmFwaVZlcnNpb246IHZlbmRpci5rMTRzLmlvL3YxYWxwaGExCmtpbmQ6\nIENvbmZpZwptaW5pbXVtUmVxdWlyZWRWZXJzaW9uOiAwLjguMApkaXJlY3Rv\ncmllczoKLSBwYXRoOiBjb25maWcvX3l0dF9saWIKICBjb250ZW50czoKICAt\nIHBhdGg6IGdpdGh1Yi5jb20vY2xvdWRmb3VuZHJ5L2NmLWs4cy1uZXR3b3Jr\naW5nCiAgICBnaXQ6CiAgICAgIHVybDogaHR0cHM6Ly9naXRodWIuY29tL2Ns\nb3VkZm91bmRyeS9jZi1rOHMtbmV0d29ya2luZwogICAgICByZWY6IHYwLjAu\nNgogICAgaW5jbHVkZVBhdGhzOgogICAgLSBjb25maWcvKgogICAgLSBjb25m\naWcvY3JkLyoqLyoKICAgIC0gY29uZmlnL2lzdGlvLWdlbmVyYXRlZC8qKi8q\nCiAgICAtIGNvbmZpZy9pc3Rpby1jb25maWcvKiovKgogICAgLSBjb25maWcv\naXN0aW8vZ2VuZXJhdGVkLyoqLyoKICAgIC0gY29uZmlnL3JvdXRlY29udHJv\nbGxlci8qKi8qCiAgLSBwYXRoOiBnaXRodWIuY29tL2Nsb3VkZm91bmRyeS9j\nYXBpLWs4cy1yZWxlYXNlCiAgICBnaXQ6CiAgICAgIHVybDogaHR0cHM6Ly9n\naXRodWIuY29tL2Nsb3VkZm91bmRyeS9jYXBpLWs4cy1yZWxlYXNlCiAgICAg\nIHJlZjogNWZiNGM4OTQ3NWIzNDdmY2U0NDkwNjhlOWYyNjA3MzJhMGU0M2Q3\nNAogICAgaW5jbHVkZVBhdGhzOgogICAgLSB0ZW1wbGF0ZXMvKiovKgogICAg\nLSB2YWx1ZXMvKiovKgogIC0gcGF0aDogZ2l0aHViLmNvbS9jbG91ZGZvdW5k\ncnkvY2YtazhzLWxvZ2dpbmcvY29uZmlnCiAgICBnaXRodWJSZWxlYXNlOgog\nICAgICBzbHVnOiBjbG91ZGZvdW5kcnkvY2YtazhzLWxvZ2dpbmcKICAgICAg\ndGFnOiAwLjIuMQogICAgICBkaXNhYmxlQXV0b0NoZWNrc3VtVmFsaWRhdGlv\nbjogdHJ1ZQogIC0gcGF0aDogZ2l0aHViLmNvbS9jbG91ZGZvdW5kcnkvbWV0\ncmljLXByb3h5CiAgICBnaXQ6CiAgICAgIHVybDogaHR0cHM6Ly9naXRodWIu\nY29tL2Nsb3VkZm91bmRyeS9tZXRyaWMtcHJveHkKICAgICAgcmVmOiBhOTg3\nYTUxZTNmMWE5Y2VhNTM3ODQxNDFmZGUyNTIwZmViMDdlMjYwCiAgICBpbmNs\ndWRlUGF0aHM6CiAgICAtIGNvbmZpZy8qKi8qCiAgLSBwYXRoOiBnaXRodWIu\nY29tL2Nsb3VkZm91bmRyeS91YWEKICAgIGdpdDoKICAgICAgdXJsOiBodHRw\nczovL2dpdGh1Yi5jb20vY2xvdWRmb3VuZHJ5L3VhYQogICAgICByZWY6IHY3\nNC4yMS4wCiAgICBpbmNsdWRlUGF0aHM6CiAgICAtIGs4cy90ZW1wbGF0ZXMv\nKiovKgogIC0gcGF0aDogZ2l0aHViLmNvbS9waXZvdGFsL2twYWNrCiAgICBn\naXRodWJSZWxlYXNlOgogICAgICBzbHVnOiBwaXZvdGFsL2twYWNrCiAgICAg\nIHRhZzogdjAuMC45CiAgICAgIGRpc2FibGVBdXRvQ2hlY2tzdW1WYWxpZGF0\naW9uOiB0cnVlCiAgICBpbmNsdWRlUGF0aHM6CiAgICAtIHJlbGVhc2UtKi55\nYW1sCiMgdGhlIGNvbXBvbmVudHMgaW4gdGhpcyBzZWN0aW9uIGJlbG93IGFy\nZSBoYW5kbGVkIGJ5IHRoZWlyIGNvcnJlc3BvbmRpbmcgYnVpbGQgc2NyaXB0\ncwojIHRoZSBtYW51YWwgcGFyYW0gdGVsbHMgdmVuZGlyIHRvIG5vdCBvdmVy\ncmlkZS90b3VjaCB0aGUgY29udGVudHMgb2YgdGhlc2UgY29uZmlnL195dHRf\nbGliLzxlaXJpbml8bWluaW98cG9zdGdyZXM+IGRpcmVjdG9yaWVzCiAgLSBw\nYXRoOiBlaXJpbmkKICAgIG1hbnVhbDoge30KICAtIHBhdGg6IG1pbmlvCiAg\nICBtYW51YWw6IHt9CiAgLSBwYXRoOiBwb3N0Z3JlcwogICAgbWFudWFsOiB7\nfQoKIyBXaGVuIGFkZGluZyBhIGhlbG0gY2hhcnQgdG8gb3VyIHNldCBvZiBj\nb21wb25lbnRzOgojIDEuIEZpbmQgdGhlIGNoYXJ0IHlvdSBuZWVkIGZyb20g\naHR0cHM6Ly9odWIuaGVsbS5zaC9jaGFydHMvc3RhYmxlCiMgMi4gTm90ZSB0\naGUgbGF0ZXN0IChvciBkZXNpcmVkKSB2ZXJzaW9uIGZyb20gdGhlICJDaGFy\ndCBWZXJzaW9ucyIgc2VjdGlvbiBvbiB0aGUgcmlnaHQuCiMgMy4gTmF2aWdh\ndGUgdG8gdGhlIGNvcnJlc3BvbmRpbmcgZGlyZWN0b3J5IG9mIGh0dHBzOi8v\nZ2l0aHViLmNvbS9oZWxtL2NoYXJ0cy90cmVlL21hc3Rlci9zdGFibGUgb3Ig\ncmVsYXRlZCByZXBvCiMgNC4gTG9vayBhdCB0aGUgaGlzdG9yeSBvciBibGFt\nZSBsb2cgb2YgdGhlIENoYXJ0LnlhbWwgZmlsZSB0byBmaW5kIHdoZW4gdGhl\nIHZlcnNpb24gd2FzIGJ1bXBlZCB0byB0aGUgdmVyc2lvbiB5b3UgZm91bmQg\nZWFybGllci4KIyA1LiBUaGUgU0hBIG9mIHRoZSBjb21taXQgdGhhdCBidW1w\nZWQgdGhlIHZlcnNpb24gd2lsbCBiZSB0aGUgU0hBIHlvdSB1c2UgYXMgdGhl\nICdyZWYnIG9mIHRoZSBnaXQgc2VjdGlvbiBiZWxvdy4KLSBwYXRoOiBidWls\nZC9taW5pby9fdmVuZGlyCiAgY29udGVudHM6CiAgLSBwYXRoOiAuCiAgICBn\naXQ6CiAgICAgIHVybDogaHR0cHM6Ly9naXRodWIuY29tL2hlbG0vY2hhcnRz\nCiAgICAgIHJlZjogOTIxZWI4YTk2OWZiOWQ3YjdiN2QxMzkwNGY3NDBjNzY3\nNDhlYzJjOSAjIHZlcnNpb246IDUuMC4zMAogICAgaW5jbHVkZVBhdGhzOgog\nICAgLSBzdGFibGUvbWluaW8vKiovKgoKLSBwYXRoOiBidWlsZC9laXJpbmkv\nX3ZlbmRpcgogIGNvbnRlbnRzOgogIC0gcGF0aDogLgogICAgZ2l0aHViUmVs\nZWFzZToKICAgICAgc2x1ZzogY2xvdWRmb3VuZHJ5LWluY3ViYXRvci9laXJp\nbmktcmVsZWFzZQogICAgICB0YWc6IHYxLjYuMAogICAgICBkaXNhYmxlQXV0\nb0NoZWNrc3VtVmFsaWRhdGlvbjogdHJ1ZQogICAgICB1bnBhY2tBcmNoaXZl\nOgogICAgICAgIHBhdGg6IGVpcmluaS50Z3oKLSBwYXRoOiBidWlsZC9wb3N0\nZ3Jlcy9fdmVuZGlyCiAgY29udGVudHM6CiAgLSBwYXRoOiAuCiAgICBnaXQ6\nCiAgICAgIHVybDogaHR0cHM6Ly9naXRodWIuY29tL2JpdG5hbWkvY2hhcnRz\nCiAgICAgIHJlZjogZjljYjAxMDJmMWUwM2Q5ZWU3ZjA5ZGJiNjVlOWQ3Y2Rj\nMjVmODRmZSAjIHZlcnNpb246IDguMTAuNgogICAgaW5jbHVkZVBhdGhzOgog\nICAgLSBiaXRuYW1pL3Bvc3RncmVzcWwvKiovKg==\n","encoding":"base64","_links":{"self":"https://api.github.com/repos/releen/vendir-fixtures/contents/vendir.yml?ref=2cf9866fcc6152579949dda7204d3930eadc2c1d","git":"https://api.github.com/repos/releen/vendir-fixtures/git/blobs/aaea33d054d080d6f9d4be8b2e4dfe8b75f91e9f","html":"https://github.com/releen/vendir-fixtures/blob/2cf9866fcc6152579949dda7204d3930eadc2c1d/vendir.yml"}}'
+    http_version: 
+  recorded_at: Sun, 28 Jun 2020 22:46:36 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/releen/vendir-fixtures/contents/vendir.lock.yml?ref=2cf9866fcc6152579949dda7204d3930eadc2c1d
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 4.18.0
+      Accept:
+      - application/vnd.github.v3+json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 28 Jun 2020 22:46:36 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Accept-Encoding, Accept, X-Requested-With, Accept-Encoding
+      Etag:
+      - W/"b668ab0ef89bf7fffc0b4a5c9bd93eb2779ee1d2"
+      Last-Modified:
+      - Sun, 28 Jun 2020 22:32:51 GMT
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '41'
+      X-Ratelimit-Reset:
+      - '1593385865'
+      Accept-Ranges:
+      - bytes
+      Transfer-Encoding:
+      - chunked
+      X-Github-Request-Id:
+      - EA3C:8FD3:CB41A3:F2ECA8:5EF91DCC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"vendir.lock.yml","path":"vendir.lock.yml","sha":"b668ab0ef89bf7fffc0b4a5c9bd93eb2779ee1d2","size":1794,"url":"https://api.github.com/repos/releen/vendir-fixtures/contents/vendir.lock.yml?ref=2cf9866fcc6152579949dda7204d3930eadc2c1d","html_url":"https://github.com/releen/vendir-fixtures/blob/2cf9866fcc6152579949dda7204d3930eadc2c1d/vendir.lock.yml","git_url":"https://api.github.com/repos/releen/vendir-fixtures/git/blobs/b668ab0ef89bf7fffc0b4a5c9bd93eb2779ee1d2","download_url":"https://raw.githubusercontent.com/releen/vendir-fixtures/2cf9866fcc6152579949dda7204d3930eadc2c1d/vendir.lock.yml","type":"file","content":"YXBpVmVyc2lvbjogdmVuZGlyLmsxNHMuaW8vdjFhbHBoYTEKZGlyZWN0b3Jp\nZXM6Ci0gY29udGVudHM6CiAgLSBnaXQ6CiAgICAgIGNvbW1pdFRpdGxlOiBV\ncGRhdGUgcm91dGVjb250cm9sbGVyIGltYWdlIGRpZ2VzdCB0byBzaGEyNTY6\nZWQ0YjNlMzUxYTMxMzEzZWJmOTc0NDM5ZTRmYjQzMjEwMjgxYTAyZjBhOTEy\nNWNiOGVhODgwYzU3MjM4NWI1ZgogICAgICBzaGE6IDQxNTNiYmRiYWYzZThk\nM2Q2ODFhODRhMTEyZjNjOWNjMTAxMjlmZjMKICAgIHBhdGg6IGdpdGh1Yi5j\nb20vY2xvdWRmb3VuZHJ5L2NmLWs4cy1uZXR3b3JraW5nCiAgLSBnaXQ6CiAg\nICAgIGNvbW1pdFRpdGxlOiBpbWFnZXMueW1sIHVwZGF0ZWQgYnkgQ0kuLi4K\nICAgICAgc2hhOiA1ZmI0Yzg5NDc1YjM0N2ZjZTQ0OTA2OGU5ZjI2MDczMmEw\nZTQzZDc0CiAgICBwYXRoOiBnaXRodWIuY29tL2Nsb3VkZm91bmRyeS9jYXBp\nLWs4cy1yZWxlYXNlCiAgLSBnaXRodWJSZWxlYXNlOgogICAgICB1cmw6IGh0\ndHBzOi8vYXBpLmdpdGh1Yi5jb20vcmVwb3MvY2xvdWRmb3VuZHJ5L2NmLWs4\ncy1sb2dnaW5nL3JlbGVhc2VzLzI2NzI1Mjg4CiAgICBwYXRoOiBnaXRodWIu\nY29tL2Nsb3VkZm91bmRyeS9jZi1rOHMtbG9nZ2luZy9jb25maWcKICAtIGdp\ndDoKICAgICAgY29tbWl0VGl0bGU6IFJlbW92ZSBlbmFibGVfbWV0cmljc19z\nZXJ2ZXIgdmFsdWUuLi4KICAgICAgc2hhOiBhOTg3YTUxZTNmMWE5Y2VhNTM3\nODQxNDFmZGUyNTIwZmViMDdlMjYwCiAgICBwYXRoOiBnaXRodWIuY29tL2Ns\nb3VkZm91bmRyeS9tZXRyaWMtcHJveHkKICAtIGdpdDoKICAgICAgY29tbWl0\nVGl0bGU6IFVwZGF0ZSBVQUEgaW1hZ2UgcmVmZXJlbmNlIGluIGs4cyBkZXBs\nb3ltZW50IHRlbXBsYXRlIHRvIDc0LjIxLjAKICAgICAgc2hhOiA3NTU3M2Vj\nMjE2ZTFjMDBhY2UyNDQ2NmFiMjE0NmJlNjJlZDRjOTY0CiAgICBwYXRoOiBn\naXRodWIuY29tL2Nsb3VkZm91bmRyeS91YWEKICAtIGdpdGh1YlJlbGVhc2U6\nCiAgICAgIHVybDogaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9yZXBvcy9waXZv\ndGFsL2twYWNrL3JlbGVhc2VzLzI3MzQzNzc2CiAgICBwYXRoOiBnaXRodWIu\nY29tL3Bpdm90YWwva3BhY2sKICAtIG1hbnVhbDoge30KICAgIHBhdGg6IGVp\ncmluaQogIC0gbWFudWFsOiB7fQogICAgcGF0aDogbWluaW8KICAtIG1hbnVh\nbDoge30KICAgIHBhdGg6IHBvc3RncmVzCiAgcGF0aDogY29uZmlnL195dHRf\nbGliCi0gY29udGVudHM6CiAgLSBnaXQ6CiAgICAgIGNvbW1pdFRpdGxlOiAn\nW3N0YWJsZS9taW5pb10gU3VwcG9ydCBpbWFnZVB1bGxTZWNyZXRzICgjMjI4\nMTIpLi4uJwogICAgICBzaGE6IDkyMWViOGE5NjlmYjlkN2I3YjdkMTM5MDRm\nNzQwYzc2NzQ4ZWMyYzkKICAgIHBhdGg6IC4KICBwYXRoOiBidWlsZC9taW5p\nby9fdmVuZGlyCi0gY29udGVudHM6CiAgLSBnaXRodWJSZWxlYXNlOgogICAg\nICB1cmw6IGh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vcmVwb3MvY2xvdWRmb3Vu\nZHJ5LWluY3ViYXRvci9laXJpbmktcmVsZWFzZS9yZWxlYXNlcy8yNjQ2OTYw\nOAogICAgcGF0aDogLgogIHBhdGg6IGJ1aWxkL2VpcmluaS9fdmVuZGlyCi0g\nY29udGVudHM6CiAgLSBnaXQ6CiAgICAgIGNvbW1pdFRpdGxlOiAnW2JpdG5h\nbWkvcG9zdGdyZXNxbF0gUmVsZWFzZSA4LjEwLjYgdXBkYXRpbmcgY29tcG9u\nZW50cyB2ZXJzaW9ucy4uLicKICAgICAgc2hhOiBmOWNiMDEwMmYxZTAzZDll\nZTdmMDlkYmI2NWU5ZDdjZGMyNWY4NGZlCiAgICBwYXRoOiAuCiAgcGF0aDog\nYnVpbGQvcG9zdGdyZXMvX3ZlbmRpcgpraW5kOiBMb2NrQ29uZmln\n","encoding":"base64","_links":{"self":"https://api.github.com/repos/releen/vendir-fixtures/contents/vendir.lock.yml?ref=2cf9866fcc6152579949dda7204d3930eadc2c1d","git":"https://api.github.com/repos/releen/vendir-fixtures/git/blobs/b668ab0ef89bf7fffc0b4a5c9bd93eb2779ee1d2","html":"https://github.com/releen/vendir-fixtures/blob/2cf9866fcc6152579949dda7204d3930eadc2c1d/vendir.lock.yml"}}'
+    http_version: 
+  recorded_at: Sun, 28 Jun 2020 22:46:37 GMT
+recorded_with: VCR 5.0.0
