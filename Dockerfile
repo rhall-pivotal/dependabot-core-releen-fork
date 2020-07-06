@@ -139,6 +139,10 @@ ENV RUSTUP_HOME=/opt/rust \
 RUN export CARGO_HOME=/opt/rust ; curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 
+# Install vendir 0.8.0
+RUN wget https://github.com/k14s/vendir/releases/download/v0.8.0/vendir-linux-amd64 \
+    && install vendir-linux-amd64 /usr/local/bin/vendir
+
 ### NEW NATIVE HELPERS
 
 COPY terraform/helpers /opt/terraform/helpers

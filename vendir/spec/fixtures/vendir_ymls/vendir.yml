@@ -1,0 +1,90 @@
+---
+    apiVersion: vendir.k14s.io/v1alpha1
+    kind: Config
+    minimumRequiredVersion: 0.8.0
+    directories:
+    - path: config/_ytt_lib
+      contents:
+      - path: github.com/cloudfoundry/cf-k8s-networking
+        git:
+          url: https://github.com/cloudfoundry/cf-k8s-networking
+          ref: v0.0.6
+        includePaths:
+        - config/*
+        - config/crd/**/*
+        - config/istio-generated/**/*
+        - config/istio-config/**/*
+        - config/istio/generated/**/*
+        - config/routecontroller/**/*
+      - path: github.com/cloudfoundry/capi-k8s-release
+        git:
+          url: https://github.com/cloudfoundry/capi-k8s-release
+          ref: 5fb4c89475b347fce449068e9f260732a0e43d74
+        includePaths:
+        - templates/**/*
+        - values/**/*
+      - path: github.com/cloudfoundry/cf-k8s-logging/config
+        githubRelease:
+          slug: cloudfoundry/cf-k8s-logging
+          tag: 0.2.1
+          disableAutoChecksumValidation: true
+      - path: github.com/cloudfoundry/metric-proxy
+        git:
+          url: https://github.com/cloudfoundry/metric-proxy
+          ref: 6b2d05e6348b7620645ec3f12cfb24a40d006b00
+        includePaths:
+        - config/**/*
+      - path: github.com/cloudfoundry/uaa
+        git:
+          url: https://github.com/cloudfoundry/uaa
+          ref: v74.21.0
+        includePaths:
+        - k8s/templates/**/*
+      - path: github.com/pivotal/kpack
+        githubRelease:
+          slug: pivotal/kpack
+          tag: v0.0.9
+          disableAutoChecksumValidation: true
+        includePaths:
+        - release-*.yaml
+    # the components in this section below are handled by their corresponding build scripts
+    # the manual param tells vendir to not override/touch the contents of these config/_ytt_lib/<eirini|minio|postgres> directories
+      - path: eirini
+        manual: {}
+      - path: minio
+        manual: {}
+      - path: postgres
+        manual: {}
+    
+    # When adding a helm chart to our set of components:
+    # 1. Find the chart you need from https://hub.helm.sh/charts/stable
+    # 2. Note the latest (or desired) version from the "Chart Versions" section on the right.
+    # 3. Navigate to the corresponding directory of https://github.com/helm/charts/tree/master/stable or related repo
+    # 4. Look at the history or blame log of the Chart.yaml file to find when the version was bumped to the version you found earlier.
+    # 5. The SHA of the commit that bumped the version will be the SHA you use as the 'ref' of the git section below.
+    - path: build/minio/_vendir
+      contents:
+      - path: .
+        git:
+          url: https://github.com/helm/charts
+          ref: 921eb8a969fb9d7b7b7d13904f740c76748ec2c9 # version: 5.0.30
+        includePaths:
+        - stable/minio/**/*
+    
+    - path: build/eirini/_vendir
+      contents:
+      - path: .
+        githubRelease:
+          slug: cloudfoundry-incubator/eirini-release
+          tag: v1.6.0
+          disableAutoChecksumValidation: true
+          unpackArchive:
+            path: eirini.tgz
+    - path: build/postgres/_vendir
+      contents:
+      - path: .
+        git:
+          url: https://github.com/bitnami/charts
+          ref: f9cb0102f1e03d9ee7f09dbb65e9d7cdc25f84fe # version: 8.10.6
+        includePaths:
+        - bitnami/postgresql/**/*
