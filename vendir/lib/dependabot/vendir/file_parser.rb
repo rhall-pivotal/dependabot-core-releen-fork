@@ -7,6 +7,7 @@ require "dependabot/file_parsers/base/dependency_set"
 require "dependabot/file_parsers"
 require "dependabot/file_parsers/base"
 require "dependabot/errors"
+require 'pp'
 
 module Dependabot
   module Vendir
@@ -14,85 +15,90 @@ module Dependabot
       def parse
         dependency_set = Dependabot::FileParsers::Base::DependencySet.new
 
+        json = YAML.safe_load(vendir_lock_yml.content, aliases: true)
+        directories = json.fetch("directories")
+        locked_deps = deep_fetch_dependencies(directories, []).uniq
+
         json = YAML.safe_load(vendir_yml.content, aliases: true)
         directories = json.fetch("directories")
-        deps = deep_fetch_dependencies(directories).uniq
+        deps = deep_fetch_dependencies(directories, []).uniq
 
-        deps.each do |dep|
-          #puts dep.name
+        deps.zip(locked_deps)
+            .each do |d|
+          dep = handle_paths(d)
           dependency_set << dep if dep
         end
 
-        module_info
         dependency_set.dependencies
 
+        #module_info
       rescue NoMethodError
         raise Dependabot::DependencyFileNotParseable, vendir_yml.path
       end
 
       private
 
-      def deep_fetch_dependencies(json_obj)
+      def deep_fetch_dependencies(json_obj, ancestors)
+        path = ancestors.dup
         case json_obj
-        when Hash then deep_fetch_dependencies_from_hash(json_obj)
-        when Array then json_obj.flat_map { |o| deep_fetch_dependencies(o) }
+        when Hash then deep_fetch_dependencies_from_hash(json_obj, path)
+        when Array then json_obj.flat_map { |o| deep_fetch_dependencies(o, path) }
         else []
         end
       end
 
-      def deep_fetch_dependencies_from_hash(json_object)
-        path = json_object.fetch("path", [])
+      def deep_fetch_dependencies_from_hash(json_object, ancestors)
+        parent_path = ancestors.dup
+        path = parent_path.push(json_object.fetch("path", []))
 
-        type = json_object.key?("contents") ? "contents" : 
-          json_object.key?("git") ? "git" : 
+        type = json_object.key?("contents") ? "contents" :
+          json_object.key?("git") ? "git" :
           json_object.key?("githubRelease") ? "githubRelease" :
           json_object.key?("directory") ? "directory" :
           json_object.key?("manual") ? "manual" : "unsupported"
 
-        handle_paths(path, json_object, type)
-      end      
-
-      def handle_paths(path, json_object, type)
-        #puts "#{path} is of type #{type}"
-        case type
-        when "contents"
-          handle_contents(path, json_object.fetch("contents"))
-        when "git"
-          handle_git(path, json_object.fetch("git"))
-        when "githubRelease"
-          handle_githubRelease(path, json_object.fetch("githubRelease"))
-        else []
+        if type.eql?("contents") then
+          deep_fetch_dependencies(json_object.fetch("contents"), path)
+        else
+          { :type => type, :path => path, json_object: json_object }
         end
       end
 
-      def handle_contents(path, json_object)
-        deps = deep_fetch_dependencies(json_object)
-        deps.flat_map { |dep|
-          name = dep.name.eql?(".") ? path : "#{path}/#{dep.name}"
-          Dependency.new(
-            name: name,
-            version: dep.version,
-            requirements: dep.requirements,
-            package_manager: dep.package_manager
-          )
-        }
+      def handle_paths(d)
+        req, lock = d
+
+        type = req[:type]
+        path = req[:path]
+        raise Dependabot::DependencyFileNotParseable.new(vendir_yml.path, 
+          "Dependency #{path} does not match path #{lock[:path]}") unless type.eql?(lock[:type]) and path.eql?(lock[:path])
+
+        case type
+        when "git"
+          handle_git(path, req, lock)
+        when "githubRelease"
+          handle_githubRelease(path, req, lock)
+        end
       end
 
-      def handle_git(path, json_object)
-        url = json_object.fetch("url", [])
-        ref = json_object.fetch("ref", [])
+      def handle_git(path, req, lock)
+        req_json_object = req[:json_object].fetch("git", [])
+        lock_json_object = lock[:json_object].fetch("git", [])
+        url = req_json_object.fetch("url", [])
+        ref = req_json_object.fetch("ref", [])
+        lock_ref = lock_json_object.fetch("sha", [])
 
         Dependency.new(
-          name: path,
-          version: ref,
+          name: path.join("/"),
+          version: lock_ref,
           requirements: [{
-            requirement: nil,
+            requirement: ref,
             groups: [],
             source: {
               type: "git",
-              url: url,
+              branch: ref,
               ref: ref,
-              branch: ref
+              url: url,
+              path: path,
             },
             file: vendir_yml.path,
           }],
@@ -100,20 +106,24 @@ module Dependabot
         )
       end
 
-      def handle_githubRelease(path, json_object)
-        slug = json_object.fetch("slug", [])
-        tag = json_object.fetch("tag", [])
+      def handle_githubRelease(path, req, lock)
+        req_json_object = req[:json_object].fetch("githubRelease", [])
+        lock_json_object = lock[:json_object].fetch("githubRelease", [])
+        slug = req_json_object.fetch("slug", [])
+        tag = req_json_object.fetch("tag", [])
+        lock_url = lock_json_object.fetch("url", [])
 
         Dependency.new(
-          name: path,
-          version: tag,
+          name: path.join("/"),
+          version: lock_url,
           requirements: [{
-            requirement: nil,
+            requirement: tag,
             groups: [],
             source: {
               type: "githubRelease",
               slug: slug,
-              tag: tag
+              tag: tag,
+              path: path
             },
             file: vendir_yml.path,
           }],
@@ -169,6 +179,7 @@ module Dependabot
 
       def check_required_files
         raise "No vendir.yml!" unless vendir_yml
+        raise "No vendir.lock.yml!" unless vendir_lock_yml
       end
     end
   end

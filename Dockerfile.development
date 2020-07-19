@@ -1,4 +1,4 @@
-FROM dependabot/dependabot-core
+FROM releen/dependabot-core
 
 # Temporarily switch to root user in order to install packages
 USER root

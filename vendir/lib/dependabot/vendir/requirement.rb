@@ -1,11 +1,5 @@
 # frozen_string_literal: true
 
-################################################################################
-# For more details on vendir version constraints, see:                             #
-# - https://github.com/Masterminds/semver                                      #
-# - https://github.com/golang/dep/blob/master/docs/Gopkg.toml.md               #
-################################################################################
-
 require "dependabot/utils"
 
 module Dependabot

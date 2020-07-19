@@ -1,0 +1,50 @@
+apiVersion: vendir.k14s.io/v1alpha1
+directories:
+- contents:
+  - git:
+      commitTitle: Update routecontroller image digest to sha256:ed4b3e351a31313ebf974439e4fb43210281a02f0a9125cb8ea880c572385b5f
+      sha: 4153bbdbaf3e8d3d681a84a112f3c9cc10129ff3
+    path: github.com/cloudfoundry/cf-k8s-networking
+  - git:
+      commitTitle: images.yml updated by CI...
+      sha: 5fb4c89475b347fce449068e9f260732a0e43d74
+    path: github.com/cloudfoundry/capi-k8s-release
+  - githubRelease:
+      url: https://api.github.com/repos/cloudfoundry/cf-k8s-logging/releases/26725288
+    path: github.com/cloudfoundry/cf-k8s-logging/config
+  - git:
+      commitTitle: Remove enable_metrics_server value...
+      sha: a987a51e3f1a9cea53784141fde2520feb07e260
+    path: github.com/cloudfoundry/metric-proxy
+  - git:
+      commitTitle: Update UAA image reference in k8s deployment template to 74.21.0
+      sha: 75573ec216e1c00ace24466ab2146be62ed4c964
+    path: github.com/cloudfoundry/uaa
+  - githubRelease:
+      url: https://api.github.com/repos/pivotal/kpack/releases/27343776
+    path: github.com/pivotal/kpack
+  - manual: {}
+    path: eirini
+  - manual: {}
+    path: minio
+  - manual: {}
+    path: postgres
+  path: config/_ytt_lib
+- contents:
+  - git:
+      commitTitle: '[stable/minio] Support imagePullSecrets (#22812)...'
+      sha: 921eb8a969fb9d7b7b7d13904f740c76748ec2c9
+    path: .
+  path: build/minio/_vendir
+- contents:
+  - githubRelease:
+      url: https://api.github.com/repos/cloudfoundry-incubator/eirini-release/releases/26469608
+    path: .
+  path: build/eirini/_vendir
+- contents:
+  - git:
+      commitTitle: '[bitnami/postgresql] Release 8.10.6 updating components versions...'
+      sha: f9cb0102f1e03d9ee7f09dbb65e9d7cdc25f84fe
+    path: .
+  path: build/postgres/_vendir
+kind: LockConfig

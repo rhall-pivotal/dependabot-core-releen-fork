@@ -1,4 +1,4 @@
-FROM dependabot/dependabot-core
+FROM releen/dependabot-core
 
 RUN useradd -m dependabot
 RUN chown -R dependabot:dependabot /usr/local/.pyenv /opt/go/gopath
@@ -112,6 +112,12 @@ COPY bundler/Gemfile \
      bundler/dependabot-bundler.gemspec \
      /home/dependabot/dependabot-core/bundler/
 RUN cd bundler && bundle install
+
+RUN mkdir -p /home/dependabot/dependabot-core/vendir
+COPY vendir/Gemfile \
+     vendir/dependabot-vendir.gemspec \
+     /home/dependabot/dependabot-core/vendir/
+RUN cd vendir && bundle install
 
 RUN mkdir -p /home/dependabot/dependabot-core/omnibus
 COPY omnibus/Gemfile \
