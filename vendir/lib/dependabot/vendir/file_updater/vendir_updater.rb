@@ -31,21 +31,17 @@ module Dependabot
         def updated_files
             @updated_files ||= update_files
         end
-  
+
         # rubocop:disable Metrics/AbcSize
         def update_files
             SharedHelpers.in_a_temporary_directory do |path|
               SharedHelpers.with_git_configured(credentials: credentials) do
                 File.write(vendir_yml.name, vendir_yml.content)
                 File.write(vendir_lock_yml.name, vendir_lock_yml.content)
+                dep_path = dependencies.first.requirements.first[:source][:path].join("/")
+                FileUtils.mkdir_p dep_path
+                command = "vendir sync -d #{dep_path}"
 
-                dependencies.each do |dep|
-                  dep_path = dep.requirements.first[:source][:path]
-                  FileUtils.mkdir_p dep_path.join("/")
-                end
-
-                command = "vendir sync"
-  
                 _, stderr, status = Open3.capture3(command)
                 handle_vendir_sync_error(path, stderr) unless status.success?
 
@@ -57,7 +53,7 @@ module Dependabot
                 # In such cases, retrying (a maximum of 3 times) may fix it.
                 retry_count ||= 0
                 raise if retry_count >= 3
-  
+
                 retry_count += 1
                 retry
               end
