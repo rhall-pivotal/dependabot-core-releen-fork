@@ -2,6 +2,8 @@
 
 source "https://rubygems.org"
 
+gem "irb"
 gem "dependabot-common", path: "../common"
+gem "dependabot-omnibus", path: "../"
 
 gemspec

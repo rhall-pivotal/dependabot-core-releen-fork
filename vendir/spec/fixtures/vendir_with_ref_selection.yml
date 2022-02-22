@@ -1,0 +1,17 @@
+---
+apiVersion: vendir.k14s.io/v1alpha1
+kind: Config
+minimumRequiredVersion: 0.11.0
+directories:
+  - path: .test
+    contents:
+      - path: nats
+        git:
+          url: https://github.com/cloudfoundry/cf-networking-release
+          refSelection:
+            semver:
+              constraints: ">=2.36.0"
+      - path: cats
+        git:
+          url: https://github.com/cloudfoundry/cf-acceptance-tests
+          ref: v7.3.0

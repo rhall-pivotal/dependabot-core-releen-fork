@@ -5,6 +5,14 @@
     directories:
     - path: config/_ytt_lib
       contents:
+      - path: github.com/cloudfoundry/cf-networking-release
+        git:
+          url: https://github.com/cloudfoundry/cf-networking-release
+          refSelection:
+            semver:
+              constraints: ">=2.36.0"
+    - path: config/_ytt_lib
+      contents:
       - path: github.com/cloudfoundry/cf-k8s-networking
         git:
           url: https://github.com/cloudfoundry/cf-k8s-networking

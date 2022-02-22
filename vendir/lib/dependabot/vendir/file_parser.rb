@@ -85,6 +85,13 @@ module Dependabot
         lock_json_object = lock[:json_object].fetch("git", [])
         url = req_json_object.fetch("url", [])
         ref = req_json_object.fetch("ref", [])
+        if req_json_object.key?("refSelection")
+          if req_json_object.fetch("refSelection").key?("semver")
+            semver = req_json_object.fetch("refSelection").fetch("semver")
+            ref = semver["constraints"]
+          end
+        end
+
         lock_ref = lock_json_object.fetch("sha", [])
 
         Dependency.new(

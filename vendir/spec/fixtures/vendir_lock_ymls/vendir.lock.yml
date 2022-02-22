@@ -2,6 +2,12 @@ apiVersion: vendir.k14s.io/v1alpha1
 directories:
 - contents:
   - git:
+      commitTitle: Release v2.38.0
+      sha: 05c292391be0d3cb72004e642566ce9484d3c9a2
+      tags:
+        - 2.38.0
+    path: github.com/cloudfoundry/cf-networking-release
+  - git:
       commitTitle: Update routecontroller image digest to sha256:ed4b3e351a31313ebf974439e4fb43210281a02f0a9125cb8ea880c572385b5f
       sha: 4153bbdbaf3e8d3d681a84a112f3c9cc10129ff3
     path: github.com/cloudfoundry/cf-k8s-networking

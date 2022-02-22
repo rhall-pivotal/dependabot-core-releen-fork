@@ -49,6 +49,28 @@ RSpec.describe Dependabot::Vendir::FileParser do
 
     its(:length) { is_expected.to eq(9) }
 
+    describe "parse for refSelection" do
+      subject(:dependency) do
+        dependencies.find { |d| d.name == "config/_ytt_lib/github.com/cloudfoundry/cf-networking-release" }
+      end
+
+      it "sets the right details" do
+        expect(dependency.requirements).to eq(
+                                             [{
+                                                requirement: ">=2.36.0",
+                                                file: vendir_yml.path,
+                                                groups: [],
+                                                source: {
+                                                  type: "git",
+                                                  url: "https://github.com/cloudfoundry/cf-networking-release",
+                                                  branch: ">=2.36.0"
+                                                },
+                                                ref: ">=2.36.0"
+                                              }]
+                                           )
+      end
+    end
+
     describe "top level dependencies" do
       subject(:dependencies) do
         parser.parse.select(&:top_level?)
