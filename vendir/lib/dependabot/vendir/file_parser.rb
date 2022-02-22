@@ -85,10 +85,12 @@ module Dependabot
         lock_json_object = lock[:json_object].fetch("git", [])
         url = req_json_object.fetch("url", [])
         ref = req_json_object.fetch("ref", [])
+        branch = ref
         if req_json_object.key?("refSelection")
           if req_json_object.fetch("refSelection").key?("semver")
             semver = req_json_object.fetch("refSelection").fetch("semver")
             ref = semver["constraints"]
+            branch = ""
           end
         end
 
@@ -102,7 +104,7 @@ module Dependabot
             groups: [],
             source: {
               type: "git",
-              branch: ref,
+              branch: branch,
               ref: ref,
               url: url,
               path: path,

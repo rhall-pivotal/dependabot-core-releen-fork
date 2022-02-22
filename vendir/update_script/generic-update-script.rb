@@ -40,7 +40,7 @@ directory = ENV["DIRECTORY_PATH"] || "/"
 # - submodules
 # - docker
 # - terraform
-package_manager = ENV["PACKAGE_MANAGER"] || "bundler"
+package_manager = ENV["PACKAGE_MANAGER"] || "vendir"
 
 if ENV["GITHUB_ENTERPRISE_ACCESS_TOKEN"]
   credentials << {
@@ -99,7 +99,7 @@ else
     provider: "github",
     repo: repo_name,
     directory: directory,
-    branch: nil,
+    branch: "feat/add-vendir-support",
   )
 end
 
@@ -128,6 +128,11 @@ parser = Dependabot::FileParsers.for_package_manager(package_manager).new(
 dependencies = parser.parse
 
 dependencies.select(&:top_level?).each do |dep|
+
+  unless dep.name.include?("test/nats")
+    next
+  end
+  puts "here"
   #########################################
   # Get update details for the dependency #
   #########################################

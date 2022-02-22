@@ -49,25 +49,26 @@ RSpec.describe Dependabot::Vendir::FileParser do
 
     its(:length) { is_expected.to eq(9) }
 
-    describe "parse for refSelection" do
+    describe "parse when refSelection is set" do
       subject(:dependency) do
         dependencies.find { |d| d.name == "config/_ytt_lib/github.com/cloudfoundry/cf-networking-release" }
       end
 
       it "sets the right details" do
-        expect(dependency.requirements).to eq(
-                                             [{
-                                                requirement: ">=2.36.0",
-                                                file: vendir_yml.path,
-                                                groups: [],
-                                                source: {
-                                                  type: "git",
-                                                  url: "https://github.com/cloudfoundry/cf-networking-release",
-                                                  branch: ">=2.36.0"
-                                                },
-                                                ref: ">=2.36.0"
-                                              }]
-                                           )
+        expect(dependency.requirements[0]).to include(
+                                                {
+                                                  requirement: ">=2.36.0",
+                                                  file: vendir_yml.path,
+                                                  groups: [],
+                                                }
+                                              )
+        expect(dependency.requirements[0][:source]).to include(
+                                                       {
+                                                         type: "git",
+                                                         url: "https://github.com/cloudfoundry/cf-networking-release",
+                                                         branch: ""
+                                                       }
+                                                     )
       end
     end
 
