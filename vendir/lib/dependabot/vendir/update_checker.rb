@@ -152,6 +152,13 @@ module Dependabot
 
               puts "exiting thing"
               dependency.requirements[0][:source][:branch] = newVersionTag
+              dependency.requirements[0][:requirement] = newVersionTag
+              dependency.requirements[0][:source][:ref] = newVersionTag
+
+
+              # require 'pp'
+              # PP.pp(dependency)
+
             end
           end
 
