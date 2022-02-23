@@ -11,12 +11,46 @@ RSpec.describe Dependabot::Vendir::UpdateChecker do
 
   describe "update dependencies" do
     context "dependency using ref selection" do
+
+      subject {checker.latest_version}
+      let(:checker) do
+        described_class.new(
+          dependency: dependency
+        )
+      end
+
+      let(:dependency_files) { [vendirlock, vendir]}
+      let(:directory) {'/'}
+      let(:vendirlock) do
+        Dependabot::DependencyFile.new(
+          name: "vendir.lock.yml",
+          content: '',
+          directory: directory
+        )
+      end
+
+      let(:vendir) do
+        Dependabot::DependencyFile.new(
+          name: "vendir.yml",
+          content: '',
+          directory: directory
+        )
+      end
+
+      let(:credentials) do
+        {
+          "GITHUB_ACCESS_TOKEN": "",
+          PROJECT_PATH: "",
+          DIRECTORY_PATH: "",
+        }
+      end
+
       let(:dependency_name) { "uaa" }
       let(:current_version) { "74.16.0" }
       let(:requirements) {
         [{
            requirement: ">=2.36.0",
-           file: "/vendir.yml",
+           file: "vendir.yml",
            source: {
              type: "git",
              branch: "",
@@ -30,7 +64,7 @@ RSpec.describe Dependabot::Vendir::UpdateChecker do
       let(:updated_requirements) {
         [{
            requirement: "3.0.0",
-           file: "/vendir.lock.yml",
+           file: "vendir.lock.yml",
            source: {
              type: "git",
              branch: "3.0.0",
