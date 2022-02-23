@@ -4,6 +4,8 @@ require "spec_helper"
 require "dependabot/dependency"
 require "dependabot/dependency_file"
 require "dependabot/vendir/update_checker"
+require 'ostruct'
+
 require_common_spec "update_checkers/shared_examples_for_update_checkers"
 
 RSpec.describe Dependabot::Vendir::UpdateChecker do
@@ -11,17 +13,29 @@ RSpec.describe Dependabot::Vendir::UpdateChecker do
 
   describe "update dependencies" do
     context "dependency using ref selection" do
-      subject {checker.latest_version}
+      subject {checker.updated_requirements}
+      let(:tags) { [ OpenStruct.new({name: "3.0.0"}) ] }
       let(:github_client) { double }
       before do
-        allow(github_client).to receive(:tags).and_return [{ name => "1.5" }, {name => "3.0.0"}, {name => "2.4.0"}]
+        VCR.configure do |c|
+          c.allow_http_connections_when_no_cassette = true
+        end
+
+        allow(github_client).to receive(:tags).and_return tags
+      end
+
+      let(:credentials) do
+        [{
+           "type" => "git_source",
+           "host" => "github.com",
+         }]
       end
 
       let(:checker) do
         described_class.new(
           dependency: dependency,
           dependency_files: dependency_files,
-          credentials: "",
+          credentials: credentials,
           github_client: github_client
         )
       end
@@ -79,7 +93,7 @@ RSpec.describe Dependabot::Vendir::UpdateChecker do
       let(:updated_requirements) {
         [{
            requirement: "3.0.0",
-           file: "vendir.lock.yml",
+           file: "vendir.yml", # maybe this should be vendir.lock.yml
            source: {
              type: "git",
              branch: "3.0.0",

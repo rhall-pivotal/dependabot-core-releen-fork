@@ -151,7 +151,6 @@ module Dependabot
           # figure out the appropriate branch and set it
           if dependency.requirements.length > 0
             if dependency.requirements[0][:source][:branch] == ""
-              github_token = ENV["GITHUB_ACCESS_TOKEN"]
               currentBranch = dependency.requirements[0][:source][:ref]
               gitPath = dependency.requirements[0][:source][:url].split("/").slice(3,4).join("/")
               allTags = @github_client.tags(gitPath, :per_page => 100).map { |tag| tag.name[0] == "v" ? tag.name[1..-1] : tag.name }
