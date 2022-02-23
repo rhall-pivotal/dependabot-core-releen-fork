@@ -47,7 +47,7 @@ RSpec.describe Dependabot::Vendir::FileParser do
   describe "parse" do
     subject(:dependencies) { parser.parse }
 
-    its(:length) { is_expected.to eq(9) }
+    its(:length) { is_expected.to eq(10) }
 
     describe "parse when refSelection is set" do
       subject(:dependency) do
@@ -99,6 +99,8 @@ RSpec.describe Dependabot::Vendir::FileParser do
               source: {
                 type: "git",
                 url: "https://github.com/cloudfoundry/cf-k8s-networking",
+                ref: "v0.0.6",
+                path: ["config/_ytt_lib", "github.com/cloudfoundry/cf-k8s-networking"],
                 branch: "v0.0.6"
               }
             }]
@@ -123,6 +125,7 @@ RSpec.describe Dependabot::Vendir::FileParser do
               source: {
                 type: "githubRelease",
                 slug: "cloudfoundry/cf-k8s-logging",
+                path: ["config/_ytt_lib", "github.com/cloudfoundry/cf-k8s-logging/config"],
                 tag: "0.2.1"
               }
             }]

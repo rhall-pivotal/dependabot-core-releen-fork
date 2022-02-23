@@ -129,9 +129,6 @@ dependencies = parser.parse
 
 dependencies.select(&:top_level?).each do |dep|
 
-  unless dep.name.include?("test/nats")
-    next
-  end
   puts "here"
   #########################################
   # Get update details for the dependency #

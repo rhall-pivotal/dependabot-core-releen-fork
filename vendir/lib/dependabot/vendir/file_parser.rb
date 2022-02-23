@@ -69,7 +69,7 @@ module Dependabot
 
         type = req[:type]
         path = req[:path]
-        raise Dependabot::DependencyFileNotParseable.new(vendir_yml.path, 
+        raise Dependabot::DependencyFileNotParseable.new(vendir_yml.path,
           "Dependency #{path} does not match path #{lock[:path]}") unless type.eql?(lock[:type]) and path.eql?(lock[:path])
 
         case type
@@ -96,7 +96,7 @@ module Dependabot
 
         lock_ref = lock_json_object.fetch("sha", [])
 
-        Dependency.new(
+        dependency = Dependency.new(
           name: path.join("/"),
           version: lock_ref,
           requirements: [{
@@ -113,6 +113,9 @@ module Dependabot
           }],
           package_manager: "vendir"
         )
+        require "pp"
+        PP.pp(dependency)
+        dependency
       end
 
       def handle_githubRelease(path, req, lock)
