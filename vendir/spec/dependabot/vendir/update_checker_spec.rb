@@ -11,11 +11,18 @@ RSpec.describe Dependabot::Vendir::UpdateChecker do
 
   describe "update dependencies" do
     context "dependency using ref selection" do
-
       subject {checker.latest_version}
+      let(:github_client) { double }
+      before do
+        allow(github_client).to receive(:tags).and_return [{ name => "1.5" }, {name => "3.0.0"}, {name => "2.4.0"}]
+      end
+
       let(:checker) do
         described_class.new(
-          dependency: dependency
+          dependency: dependency,
+          dependency_files: dependency_files,
+          credentials: "",
+          github_client: github_client
         )
       end
 
@@ -25,7 +32,7 @@ RSpec.describe Dependabot::Vendir::UpdateChecker do
         Dependabot::DependencyFile.new(
           name: "vendir.lock.yml",
           content: '',
-          directory: directory
+          directory: directory,
         )
       end
 
@@ -37,13 +44,21 @@ RSpec.describe Dependabot::Vendir::UpdateChecker do
         )
       end
 
-      let(:credentials) do
-        {
-          "GITHUB_ACCESS_TOKEN": "",
-          PROJECT_PATH: "",
-          DIRECTORY_PATH: "",
-        }
+      let(:dependency) do
+        Dependabot::Dependency.new(
+          name: dependency_name,
+          version: current_version,
+          requirements: requirements,
+          package_manager: "vendir"
+        )
       end
+      # let(:credentials) do
+      #  {
+      #    "GITHUB_ACCESS_TOKEN": "",
+      #    PROJECT_PATH: "",
+      #    DIRECTORY_PATH: "",
+      #  }
+      # end
 
       let(:dependency_name) { "uaa" }
       let(:current_version) { "74.16.0" }
