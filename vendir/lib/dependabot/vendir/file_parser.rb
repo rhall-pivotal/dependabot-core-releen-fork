@@ -96,7 +96,7 @@ module Dependabot
 
         lock_ref = lock_json_object.fetch("sha", [])
 
-        dependency = Dependency.new(
+        Dependency.new(
           name: path.join("/"),
           version: lock_ref,
           requirements: [{
@@ -113,9 +113,6 @@ module Dependabot
           }],
           package_manager: "vendir"
         )
-        require "pp"
-        PP.pp(dependency)
-        dependency
       end
 
       def handle_githubRelease(path, req, lock)

@@ -163,7 +163,8 @@ module Dependabot
             all_tags = @github_client.tags
                                      .map { |tag| tag.name[0] == "v" ? tag.name[1..-1] : tag.name }
                                      .filter { |t| Gem::Version.correct?(t) }
-                                     .sort_by { |t| Gem::Version.new(t) }.reverse
+                                     .sort_by { |t| Gem::Version.new(t) }
+                                     .reverse
 
             if all_tags.empty?
               raise "no valid tags found for dependency #{dep.name}"
