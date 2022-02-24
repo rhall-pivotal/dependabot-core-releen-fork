@@ -14,13 +14,9 @@ RSpec.describe Dependabot::Vendir::UpdateChecker do
   describe "update dependencies" do
     context "dependency using ref selection" do
       subject {checker.updated_requirements}
-      let(:tags) { [ OpenStruct.new({name: "3.0.0"}) ] }
+      let(:tags) { [ OpenStruct.new({name: "3.0.0"}), OpenStruct.new({name: "2.4.0"}), OpenStruct.new({name: "2.30.0"}) ] }
       let(:github_client) { double }
       before do
-        VCR.configure do |c|
-          c.allow_http_connections_when_no_cassette = true
-        end
-
         allow(github_client).to receive(:tags).and_return tags
       end
 
@@ -29,15 +25,6 @@ RSpec.describe Dependabot::Vendir::UpdateChecker do
            "type" => "git_source",
            "host" => "github.com",
          }]
-      end
-
-      let(:checker) do
-        described_class.new(
-          dependency: dependency,
-          dependency_files: dependency_files,
-          credentials: credentials,
-          github_client: github_client
-        )
       end
 
       let(:dependency_files) { [vendirlock, vendir]}
@@ -66,13 +53,23 @@ RSpec.describe Dependabot::Vendir::UpdateChecker do
           package_manager: "vendir"
         )
       end
-      # let(:credentials) do
-      #  {
-      #    "GITHUB_ACCESS_TOKEN": "",
-      #    PROJECT_PATH: "",
-      #    DIRECTORY_PATH: "",
-      #  }
-      # end
+
+      let(:credentials) do
+        {
+          "GITHUB_ACCESS_TOKEN": "",
+          PROJECT_PATH: "",
+          DIRECTORY_PATH: "",
+        }
+      end
+
+      let(:checker) do
+        described_class.new(
+          dependency: dependency,
+          dependency_files: dependency_files,
+          credentials: credentials,
+          github_client: github_client
+        )
+      end
 
       let(:dependency_name) { "uaa" }
       let(:current_version) { "74.16.0" }

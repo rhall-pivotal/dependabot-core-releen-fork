@@ -129,14 +129,15 @@ dependencies = parser.parse
 
 dependencies.select(&:top_level?).each do |dep|
 
-  puts "here"
   #########################################
   # Get update details for the dependency #
   #########################################
+  dep_url = dep.requirements[0][:source][:url]
   checker = Dependabot::UpdateCheckers.for_package_manager(package_manager).new(
     dependency: dep,
     dependency_files: files,
     credentials: credentials,
+    github_client: Dependabot::GitMetadataFetcher.new(url: dep_url, credentials: credentials)
   )
 
   next if checker.up_to_date?
